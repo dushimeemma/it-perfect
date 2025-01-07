@@ -10,7 +10,7 @@ export default function Projects() {
   return (
     <div
       id="projects"
-      className="w-screen min-h-screen flex flex-col mb-6 p-6 items-center mt-6"
+      className="min-h-screen w-[94vw] flex flex-col mb-6 p-6 items-center mt-6"
     >
       <Title title="Projects" />
       <SubTitle text="Our creative solution" />

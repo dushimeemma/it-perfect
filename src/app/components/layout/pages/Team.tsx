@@ -7,7 +7,7 @@ export default function Team() {
   return (
     <div
       id="team"
-      className="p-6 min-h-[60vh] w-screen flex flex-col items-center mt-6"
+      className="p-6 min-h-[60vh] w-[94vw] flex flex-col items-center mt-6"
     >
       <Title title="Team" />
       <SubTitle text="Know about our people" />

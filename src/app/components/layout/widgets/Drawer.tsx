@@ -1,6 +1,8 @@
 "use client";
 
 import { useState } from "react";
+import { useTheme } from "next-themes";
+import { ThemeProvider, createTheme } from "@mui/material/styles";
 import Box from "@mui/material/Box";
 import Drawer from "@mui/material/Drawer";
 import List from "@mui/material/List";
@@ -12,13 +14,39 @@ import { navLinks } from "@/app/helpers/stub-data/nav-links";
 import Link from "next/link";
 import Logo from "./Logo";
 import Button from "@/app/components/reusable/Button";
+import ThemeIcon from "../../reusable/Theme";
+
+declare module "@mui/material/styles" {
+  interface Theme {
+    status: {
+      danger: string;
+    };
+  }
+  interface ThemeOptions {
+    status?: {
+      danger?: string;
+    };
+  }
+}
 
 interface Props {
   buttonChildren: React.ReactNode;
 }
+export const lightTheme = createTheme({
+  palette: {
+    mode: "light",
+  },
+});
+
+export const darkTheme = createTheme({
+  palette: {
+    mode: "dark",
+  },
+});
 
 export default function SideDrawer({ buttonChildren }: Props) {
   const [open, setOpen] = useState(false);
+  const { theme } = useTheme();
 
   const toggleDrawer = (newOpen: boolean) => () => {
     setOpen(newOpen);
@@ -26,13 +54,13 @@ export default function SideDrawer({ buttonChildren }: Props) {
 
   const DrawerList = (
     <Box sx={{ width: 250 }} role="presentation" onClick={toggleDrawer(false)}>
-      <Logo className="m-6 ml-3 bg-white" />
+      <Logo className="m-6 ml-3" />
       <Divider />
       <List>
         {navLinks.map((link) => (
           <ListItem
             key={link.name}
-            className="bg-white hover:bg-gray-100 p-3 hover:rounded-md capitalize"
+            className=" p-3 hover:rounded-md capitalize"
             disablePadding
           >
             <Link href={link.href}>
@@ -41,6 +69,8 @@ export default function SideDrawer({ buttonChildren }: Props) {
           </ListItem>
         ))}
       </List>
+      <Divider />
+      <ThemeIcon classNames="m-6" />
       <Divider />
       <List>
         <ListItem disablePadding>
@@ -66,9 +96,11 @@ export default function SideDrawer({ buttonChildren }: Props) {
       <button className="lg:hidden" onClick={toggleDrawer(true)}>
         {buttonChildren}
       </button>
-      <Drawer open={open} onClose={toggleDrawer(false)}>
-        {DrawerList}
-      </Drawer>
+      <ThemeProvider theme={theme === "light" ? lightTheme : darkTheme}>
+        <Drawer open={open} onClose={toggleDrawer(false)}>
+          {DrawerList}
+        </Drawer>
+      </ThemeProvider>
     </div>
   );
 }

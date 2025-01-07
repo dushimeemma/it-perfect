@@ -2,13 +2,13 @@ import SubTitle from "@/app/components/reusable/SubTitle";
 import Title from "@/app/components/reusable/Title";
 import Blog from "../../reusable/blog/Blog";
 import { blogs } from "@/app/helpers/stub-data/blogs";
-import SeeMore from "@/app/components/reusable/SeeMore";
+// import SeeMore from "@/app/components/reusable/SeeMore";
 
 export default function Blogs() {
   return (
     <div
       id="blog"
-      className="w-screen min-h-screen flex flex-col items-center p-6 mt-6"
+      className="min-h-screen w-[94vw] flex flex-col items-center p-6 mt-6"
     >
       <Title title="Blogs" />
       <SubTitle text="Check this valuable insights" />
@@ -38,7 +38,7 @@ export default function Blogs() {
               heightSize={179}
             />
           ))}
-          <SeeMore label="Read more blogs" classNames="self-end" />
+          {/* <SeeMore label="Read more blogs" classNames="self-end" /> */}
         </div>
       </div>
     </div>

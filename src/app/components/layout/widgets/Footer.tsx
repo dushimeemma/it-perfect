@@ -8,7 +8,7 @@ import { socialMedia } from "@/app/helpers/stub-data/social-media";
 
 export default function Footer() {
   return (
-    <div className="w-screen min-h-[60vh] bg-primary text-white flex lg:flex-row flex-col justify-around items-start p-6">
+    <div className=" min-h-[60vh] bg-primary text-white flex lg:flex-row flex-col justify-around items-start p-6">
       <Image
         src="/Footer-logo.png"
         width={328}

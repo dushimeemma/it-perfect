@@ -6,7 +6,7 @@ import SubTitle from "@/app/components/reusable/SubTitle";
 export default function Services() {
   return (
     <div
-      className="m-6 min-h-screen flex flex-col w-screen items-center"
+      className="min-h-screen w-[94vw] flex flex-col items-center"
       id="services"
     >
       <Title />
